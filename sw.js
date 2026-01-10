@@ -118,11 +118,18 @@ self.addEventListener('fetch', (event) => {
   }
 
   // 3. Imágenes de Episodios (Cache First)
-  if (event.request.destination === 'image' || url.href.includes('mzstatic') || url.href.includes('anchor')) {
+  if (event.request.destination === 'image' ||
+    url.href.includes('mzstatic') ||
+    url.href.includes('anchor') ||
+    url.href.includes('blogspot') ||
+    url.href.includes('blogger') ||
+    url.href.includes('googleusercontent')) {
+
     event.respondWith(
       caches.match(event.request).then((cached) => {
         return cached || fetch(event.request).then((response) => {
-          if (response && response.ok) {
+          // IMPORTANTE: Permitir respuestas opacas (status 0) para imágenes externas
+          if (response && (response.ok || response.type === 'opaque')) {
             const cloned = response.clone();
             caches.open(CACHE_NAME).then(cache => cache.put(event.request, cloned));
           }
