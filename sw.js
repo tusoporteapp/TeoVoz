@@ -20,6 +20,11 @@ const STATIC_ASSETS = [
   './requests.html',
   './search.html',
   './spirituality.html',
+  './peliculasyseries.html',
+  './religion.html',
+  './miniserieStrangerThings.html',
+  './miniserieBreakingBad.html',
+  './miniserieBlacklist.html',
   './index.tsx',
   'https://lucide.dev/favicon.ico'
 ];

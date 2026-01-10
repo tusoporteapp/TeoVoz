@@ -2,100 +2,133 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
-    <link rel="apple-touch-icon" href="./logo.svg" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f172a" />
-    <title>TEOVOZ - Historia</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/index.css">
-    <style>
-        /* ... Reusing same styles or importing a common css file if possible, but for now inlining critical CSS just like index.html for consistency ... */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+  <link rel="apple-touch-icon" href="./logo.svg" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="TEOVOZ" />
+  <meta name="description" content="TEOVOZ - Resúmenes de libros de 15 minutos." />
+  <link rel="manifest" href="manifest.json" />
+  <title>TEOVOZ - Inicio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
 
-        :root {
-            --app-bg: #0f172a;
-            --app-surface: #1e293b;
-            --app-text: #f8fafc;
-            --app-text-muted: #94a3b8;
-            --app-border: #2d3748;
-        }
+    :root {
+      --app-bg: #0f172a;
+      --app-surface: #1e293b;
+      --app-surface-hover: #334155;
+      --app-text: #f8fafc;
+      --app-text-muted: #94a3b8;
+      --app-border: #2d3748;
+      --app-nav-bg: #1e293b;
+      --app-accent: #6366f1;
+    }
 
-        [data-theme='dark-pure'] {
-            --app-bg: #000000;
-            --app-surface: #121212;
-            --app-text: #ffffff;
-            --app-text-muted: #888888;
-            --app-border: #262626;
-        }
+    [data-theme='dark-pure'] {
+      --app-bg: #000000;
+      --app-surface: #121212;
+      --app-surface-hover: #1e1e1e;
+      --app-text: #ffffff;
+      --app-text-muted: #888888;
+      --app-border: #262626;
+      --app-nav-bg: #121212;
+      --app-accent: #818cf8;
+    }
 
-        [data-theme='light'] {
-            --app-bg: #ffffff;
-            --app-surface: #f8fafc;
-            --app-text: #0f172a;
-            --app-text-muted: #64748b;
-            --app-border: #e2e8f0;
-        }
+    [data-theme='light'] {
+      --app-bg: #ffffff;
+      --app-surface: #f8fafc;
+      --app-surface-hover: #f1f5f9;
+      --app-text: #0f172a;
+      --app-text-muted: #64748b;
+      --app-border: #e2e8f0;
+      --app-nav-bg: #ffffff;
+      --app-accent: #4f46e5;
+    }
 
-        body {
-            background-color: var(--app-bg);
-            color: var(--app-text);
-            font-family: system-ui, -apple-system, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-        }
+    body {
+      background-color: var(--app-bg);
+      color: var(--app-text);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+      overflow-x: hidden;
+      touch-action: pan-x pan-y;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
 
-        .bg-app {
-            background-color: var(--app-bg);
-        }
+    .bg-app {
+      background-color: var(--app-bg);
+    }
 
-        .bg-surface {
-            background-color: var(--app-surface);
-        }
+    .bg-surface {
+      background-color: var(--app-surface);
+    }
 
-        .text-primary {
-            color: var(--app-text);
-        }
+    .bg-nav {
+      background-color: var(--app-nav-bg);
+    }
 
-        .text-muted {
-            color: var(--app-text-muted);
-        }
+    .text-primary {
+      color: var(--app-text);
+    }
 
-        .border-app {
-            border-color: var(--app-border);
-        }
+    .text-muted {
+      color: var(--app-text-muted);
+    }
 
-        @media all and (display-mode: standalone) {
-            body {
-                padding-top: env(safe-area-inset-top);
-            }
-        }
+    .border-app {
+      border-color: var(--app-border);
+    }
 
-        .pb-safe {
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-    </style>
+    input,
+    textarea {
+      user-select: text !important;
+      -webkit-user-select: text !important;
+    }
+
+    @media all and (display-mode: standalone) {
+      body {
+        padding-top: env(safe-area-inset-top);
+      }
+    }
+
+    img {
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  </style>
   <script type="module" crossorigin src="./assets/react-vendor-B--z-fyW.js"></script>
   <script type="module" crossorigin src="./assets/icons-vendor-BvGhHfW4.js"></script>
   <script type="module" crossorigin src="./assets/firebase-vendor-B9iMak2x.js"></script>
-  <script type="module" crossorigin src="./assets/main-DuSLbViu.js"></script>
+  <script type="module" crossorigin src="./assets/main-DhGSCcp1.js"></script>
 </head>
 
 <body oncontextmenu="return false;">
-    <div id="root"></div>
-    <script>
-        const savedTheme = localStorage.getItem('teovoz_theme') || 'deep';
-        if (savedTheme !== 'deep') { document.documentElement.setAttribute('data-theme', savedTheme); }
-    </script>
+  <div id="root"></div>
+  <script>
+    const savedTheme = localStorage.getItem('teovoz_theme') || 'deep';
+    if (savedTheme !== 'deep') {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
 </body>
 
 </html>
