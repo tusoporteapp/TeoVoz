@@ -26,7 +26,6 @@ messaging.onBackgroundMessage((payload) => {
 
 const CACHE_NAME = 'teovoz-pwa-v2';
 const STATIC_ASSETS = [
-  './',
   './index.html',
   './index.tsx',
   'https://cdn.tailwindcss.com',
