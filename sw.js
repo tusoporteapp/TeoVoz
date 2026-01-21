@@ -1,28 +1,5 @@
-importScripts('https://www.gstatic.com/firebasejs/11.2.0/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/11.2.0/firebase-messaging-compat.js');
+// Service Worker limpio sin Firebase Messaging
 
-firebase.initializeApp({
-  apiKey: "AIzaSyBu9odaD8zX6q0tS9GKIEfm_iVJnWceGOg",
-  authDomain: "teovoz-app.firebaseapp.com",
-  projectId: "teovoz-app",
-  storageBucket: "teovoz-app.firebasestorage.app",
-  messagingSenderId: "265111539880",
-  appId: "1:265111539880:web:c01733932b5728b11db29d",
-  measurementId: "G-MX523LY3B4"
-});
-
-const messaging = firebase.messaging();
-
-messaging.onBackgroundMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Mensaje en segundo plano recibido ', payload);
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: '/pwa-192x192.png'
-  };
-
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
 
 const CACHE_NAME = 'teovoz-pwa-v3';
 const STATIC_ASSETS = [
