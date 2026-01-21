@@ -24,10 +24,9 @@ messaging.onBackgroundMessage((payload) => {
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
-const CACHE_NAME = 'teovoz-pwa-v2';
+const CACHE_NAME = 'teovoz-pwa-v3';
 const STATIC_ASSETS = [
   './index.html',
-  './index.tsx',
   'https://cdn.tailwindcss.com',
   'https://lucide.dev/favicon.ico'
 ];
