@@ -113,6 +113,7 @@
       padding-bottom: env(safe-area-inset-bottom);
     }
 
+    /* Custom Animations for Dynamic Features */
     @keyframes float-up {
       0% {
         transform: translateY(100%) scale(0.5);
@@ -134,15 +135,48 @@
       }
     }
 
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .animate-float-up {
-      animation-name: float-up;
-      animation-timing-function: ease-out;
-      animation-fill-mode: forwards;
+      animation: float-up 3s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: fade-in 0.5s ease-out forwards;
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.5s ease-out forwards;
+    }
+
+    /* Override Tailwind animate-in if missing */
+    .animate-in {
+      animation: fade-in 0.3s ease-out forwards;
     }
   </style>
 
   <script type="module" crossorigin src="/assets/useBookRequests-nO4Nbp_U.js"></script>
-  <script type="module" crossorigin src="/assets/main-DbgrtyQa.js"></script>
+  <script type="module" crossorigin src="/assets/main-DxsPbeWk.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-B96fsOfb.css">
 </head>
 
