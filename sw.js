@@ -89,7 +89,17 @@ self.addEventListener('fetch', (event) => {
 
   // 0. Estrategia para Audio (Network Only - Bypass SW)
   // Crucial para Android 15: Dejar que el navegador maneje el streaming nativo sin intermediarios
-  if (url.pathname.endsWith('.mp3') || url.pathname.endsWith('.m4a') || url.pathname.endsWith('.wav') || event.request.destination === 'audio') {
+  if (
+    url.pathname.endsWith('.mp3') ||
+    url.pathname.endsWith('.m4a') ||
+    url.pathname.endsWith('.wav') ||
+    event.request.destination === 'audio' ||
+    // EXCLUSIONES DE FIREBASE Y API (Network Only)
+    url.hostname.includes('firebaseio.com') ||
+    url.hostname.includes('googleapis.com') ||
+    url.hostname.includes('teovoz-app') ||
+    url.pathname.includes('/api/')
+  ) {
     return; // Bypass Service Worker entirely
   }
 
@@ -155,8 +165,9 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Fallback genérico
-  event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
-  );
+  // Fallback genérico: NETWORK ONLY
+  // El usuario explícitamente solicitó que NO funcione sin conexión.
+  // Cualquier otra cosa no interceptada explícitamente arriba irá directo a la red.
+  // Si falla, fallará naturalmente.
+  return;
 });
