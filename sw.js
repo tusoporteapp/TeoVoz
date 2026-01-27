@@ -1,53 +1,4 @@
-importScripts('https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging-compat.js');
-
-// Configuración de Firebase en el Service Worker
-const firebaseConfig = {
-  apiKey: "AIzaSyBu9odaD8zX6q0tS9GKIEfm_iVJnWceGOg",
-  authDomain: "teovoz-app.firebaseapp.com",
-  projectId: "teovoz-app",
-  storageBucket: "teovoz-app.firebasestorage.app",
-  messagingSenderId: "265111539880",
-  appId: "1:265111539880:web:c01733932b5728b11db29d",
-  measurementId: "G-MX523LY3B4"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const messaging = firebase.messaging();
-
-messaging.onBackgroundMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: '/Logo PNG.png',
-    data: { url: '/' } // Open root by default
-  };
-
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
-
-self.addEventListener('notificationclick', function (event) {
-  console.log('[Service Worker] Notification click Received.');
-  event.notification.close();
-  event.waitUntil(
-    clients.matchAll({ type: 'window' }).then(windowClients => {
-      // Check if there is already a window/tab open with the target URL
-      for (var i = 0; i < windowClients.length; i++) {
-        var client = windowClients[i];
-        // If so, just focus it.
-        if (client.url.includes(self.registration.scope) && 'focus' in client) {
-          return client.focus();
-        }
-      }
-      // If not, then open the target URL in a new window/tab.
-      if (clients.openWindow) {
-        return clients.openWindow('/');
-      }
-    })
-  );
-});
+// Service Worker limpio sin Firebase Messaging
 
 
 const CACHE_NAME = 'teovoz-pwa-v3';
@@ -89,17 +40,7 @@ self.addEventListener('fetch', (event) => {
 
   // 0. Estrategia para Audio (Network Only - Bypass SW)
   // Crucial para Android 15: Dejar que el navegador maneje el streaming nativo sin intermediarios
-  if (
-    url.pathname.endsWith('.mp3') ||
-    url.pathname.endsWith('.m4a') ||
-    url.pathname.endsWith('.wav') ||
-    event.request.destination === 'audio' ||
-    // EXCLUSIONES DE FIREBASE Y API (Network Only)
-    url.hostname.includes('firebaseio.com') ||
-    url.hostname.includes('googleapis.com') ||
-    url.hostname.includes('teovoz-app') ||
-    url.pathname.includes('/api/')
-  ) {
+  if (url.pathname.endsWith('.mp3') || url.pathname.endsWith('.m4a') || url.pathname.endsWith('.wav') || event.request.destination === 'audio') {
     return; // Bypass Service Worker entirely
   }
 
@@ -165,9 +106,8 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Fallback genérico: NETWORK ONLY
-  // El usuario explícitamente solicitó que NO funcione sin conexión.
-  // Cualquier otra cosa no interceptada explícitamente arriba irá directo a la red.
-  // Si falla, fallará naturalmente.
-  return;
+  // Fallback genérico
+  event.respondWith(
+    fetch(event.request).catch(() => caches.match(event.request))
+  );
 });
