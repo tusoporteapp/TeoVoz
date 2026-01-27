@@ -50,9 +50,10 @@ self.addEventListener('notificationclick', function (event) {
 });
 
 
-const CACHE_NAME = 'teovoz-pwa-v4';
+const CACHE_NAME = 'teovoz-pwa-v3';
 const STATIC_ASSETS = [
   './index.html',
+  'https://cdn.tailwindcss.com',
   'https://lucide.dev/favicon.ico'
 ];
 
