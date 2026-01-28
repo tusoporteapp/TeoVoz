@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:1;"><path d="M16 8h6V3h-6v15M2 3h9M2 8h9m-9 5h3"/><circle cx="12" cy="18" r="4"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect width="512" height="512" fill="#FFFFFF" fill-rule="evenodd" />
+    <g transform="translate(81 81)">
+      <path d="M204.167 72.9167L291.667 72.9167L291.667 1.14441e-05L204.167 7.62939e-06L204.167 218.75M0 0L131.25 7.62939e-06M-3.8147e-06 72.9167L131.25 72.9167M-5.72205e-06 145.833L43.75 145.833" fill="none" stroke-width="10" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1 0 -0 1 29.167 43.75)" />
+      <path d="M0 58.3333C0 26.1167 26.1167 0 58.3333 0C90.5499 0 116.667 26.1167 116.667 58.3333C116.667 90.5499 90.5499 116.667 58.3333 116.667C26.1167 116.667 0 90.5499 0 58.3333Z" fill="none" stroke-width="10" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1 0 -0 1 116.666 204.167)" />
+    </g>
+  </g>
+</svg>

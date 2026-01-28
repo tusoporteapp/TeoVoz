@@ -7,7 +7,7 @@
   <title>TeoVoz</title>
 
   <!-- PWA Meta Tags -->
-  <link rel="icon" type="image/svg+xml" href="/TeoVoz.svg" />
+  <link rel="icon" type="image/png" href="/icon-512.png" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#000000" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -16,14 +16,15 @@
   <link rel="apple-touch-icon" href="/icon-192.png" />
   <meta name="mobile-web-app-capable" content="yes" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     /* Desactivar selección de texto y comportamientos de navegador para sentir nativo */
     * {
       -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
-      user-select: none;
+      -moz-user-select: none;
+           user-select: none;
       outline: none;
     }
 
@@ -36,7 +37,8 @@
     input,
     textarea {
       -webkit-user-select: text;
-      user-select: text;
+      -moz-user-select: text;
+           user-select: text;
     }
 
     /* Bloquear guardado de imágenes */
@@ -109,7 +111,8 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-CQGWhTb6.js"></script>
+  <script type="module" crossorigin src="/assets/index-CNEPsCmQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-bbP2i9Hf.css">
 </head>
 
 <body
