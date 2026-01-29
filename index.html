@@ -99,6 +99,20 @@
       animation: spin 0.6s ease-in-out;
     }
   </style>
+  <script>
+    // Script de inicialización de tema inmediato para evitar parpadeos (FOIT)
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('teovoz_theme');
+        // Por defecto es 'light' en App.tsx, así que solo agregamos 'dark' si está guardado explícitamente
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) { }
+    })();
+  </script>
 
 
   <script type="importmap">
@@ -116,7 +130,7 @@
 </head>
 
 <body
-  class="bg-neutral-900 text-white font-sans antialiased overflow-hidden h-screen w-screen flex items-center justify-center">
+  class="bg-zinc-50 dark:bg-neutral-900 text-zinc-900 dark:text-white font-sans antialiased overflow-hidden h-screen w-screen flex items-center justify-center transition-colors duration-300">
   <div id="root" class="h-full w-full flex justify-center"></div>
   <script>
     // Bloquear menú contextual globalmente
